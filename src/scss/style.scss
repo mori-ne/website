@@ -1,3 +1,37 @@
 @charset "UTF-8";
-
 @import "reset";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.wrapper {}
+
+.header {
+    width: 100%;
+
+    &--container {
+        display: flex;
+        padding: 5vw 0;
+
+        h1 {
+            max-width: 35vw;
+            margin: 0 0 0 5vw;
+
+            a {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        &__drower {
+            width: 40px;
+            height: 44px;
+            background: #000;
+        }
+    }
+
+}
