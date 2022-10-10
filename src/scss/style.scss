@@ -2,6 +2,8 @@
 @import "reset";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
+$primary-color: #126ab2;
+
 body {
     font-family: 'Noto Sans JP', sans-serif;
 }
@@ -11,12 +13,13 @@ body {
 .header {
     width: 100%;
 
-    &--container {
+    .inner {
         display: flex;
-        padding: 5vw 0;
+        justify-content: space-between;
+        padding: 20px 0;
 
         h1 {
-            max-width: 35vw;
+            max-width: 140px;
             margin: 0 0 0 5vw;
 
             a {
@@ -27,11 +30,30 @@ body {
             }
         }
 
-        &__drower {
-            width: 40px;
-            height: 44px;
-            background: #000;
+        .drower {
+            display: flex;
+            flex-direction: row;
+
+            div {
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                color: $primary-color;
+            }
+
+            .menu-btn {
+                background: #aaa;
+
+                button {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 1em;
+                    border: none;
+                    background: $primary-color;
+                }
+            }
         }
     }
-
 }

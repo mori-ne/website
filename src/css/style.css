@@ -61,20 +61,38 @@ body {
 .header {
   width: 100%;
 }
-.header--container {
+.header .inner {
   display: flex;
-  padding: 5vw 0;
+  justify-content: space-between;
+  padding: 20px 0;
 }
-.header--container h1 {
-  max-width: 35vw;
+.header .inner h1 {
+  max-width: 140px;
   margin: 0 0 0 5vw;
 }
-.header--container h1 a img {
+.header .inner h1 a img {
   width: 100%;
   height: auto;
 }
-.header--container__drower {
-  width: 40px;
-  height: 44px;
-  background: #000;
+.header .inner .drower {
+  display: flex;
+  flex-direction: row;
+}
+.header .inner .drower div {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #126ab2;
+}
+.header .inner .drower .menu-btn {
+  background: #aaa;
+}
+.header .inner .drower .menu-btn button {
+  width: 20px;
+  height: 20px;
+  border-radius: 1em;
+  border: none;
+  background: #126ab2;
 }/*# sourceMappingURL=style.css.map */
