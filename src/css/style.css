@@ -56,43 +56,206 @@ h6 {
 
 body {
   font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  transition: ease 0.2s;
+  color: #1a1a1a;
+}
+a:hover {
+  transition: ease 0.2s;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.inner {
+  margin: 0 5vw;
 }
 
 .header {
   width: 100%;
+  background: #fff;
 }
-.header .inner {
+.header--content {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 20px 0;
 }
-.header .inner h1 {
-  max-width: 140px;
-  margin: 0 0 0 5vw;
-}
-.header .inner h1 a img {
-  width: 100%;
+.header--content__logo {
+  width: 160px;
   height: auto;
 }
-.header .inner .drower {
+.header--content__drower {
   display: flex;
   flex-direction: row;
-}
-.header .inner .drower div {
-  display: flex;
   align-items: center;
+}
+.header--content__drower__text {
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 1px;
   color: #126ab2;
+  margin: 0 10px 0 0;
 }
-.header .inner .drower .menu-btn {
-  background: #aaa;
-}
-.header .inner .drower .menu-btn button {
-  width: 20px;
-  height: 20px;
+.header--content__drower__btn {
+  width: 30px;
+  height: 30px;
   border-radius: 1em;
-  border: none;
+  background: #e9f0f7;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header--content__drower__btn::after {
+  content: "";
+  width: 8px;
+  height: 8px;
   background: #126ab2;
+  border-radius: 1em;
+  position: absolute;
+}
+.header--content__drower__btn::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #126ab2;
+  border-radius: 1em;
+  position: absolute;
+  -webkit-animation-name: expansion;
+          animation-name: expansion;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+@-webkit-keyframes expansion {
+  0% {
+    width: 8px;
+    height: 8px;
+    background: #126ab2;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    background: #e9f0f7;
+  }
+}
+@keyframes expansion {
+  0% {
+    width: 8px;
+    height: 8px;
+    background: #126ab2;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    background: #e9f0f7;
+  }
+}
+
+.topimage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.topimage::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 60%;
+  background: #e9f0f7;
+}
+.topimage--headline {
+  position: relative;
+  z-index: 3;
+  margin: 100px 0 80px 0;
+}
+.topimage--headline h2 {
+  font-size: 34px;
+  line-height: 1.58;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+}
+.topimage--headline h2 span {
+  display: inline-block;
+}
+.topimage--headline p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4d4d4d;
+  letter-spacing: 0.05em;
+}
+.topimage--img {
+  position: absolute;
+  z-index: 3;
+  height: 800px;
+}
+.topimage--img__01 {
+  width: 60vw;
+  height: auto;
+  top: -160px;
+  right: -30px;
+}
+.topimage--img__02 {
+  width: 70vw;
+  height: auto;
+  top: 0;
+  left: -60px;
+}
+.topimage--img__03 {
+  width: 45vw;
+  height: auto;
+  right: 20px;
+  bottom: -300px;
+  z-index: 2;
+}
+.topimage--text {
+  position: relative;
+  padding: 100px 0 100px 0;
+  font-size: 16px;
+  line-height: 2.15;
+  z-index: 2;
+}
+.topimage--btn {
+  position: absolute;
+  right: 5vw;
+  bottom: -70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background: #ffbb33;
+  border-radius: 5em;
+  font-weight: bold;
+  z-index: 3;
+}
+.topimage--btn::before {
+  position: absolute;
+  content: "";
+  width: 150px;
+  height: 150px;
+  bottom: -20px;
+  border-radius: 5em;
+  background: #ffbb33;
+  filter: blur(6px);
+  opacity: 0.2;
+  z-index: 1;
 }/*# sourceMappingURL=style.css.map */

@@ -3,57 +3,230 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
 $primary-color: #126ab2;
+$bg-color: #e9f0f7;
+$txt-color1: #1a1a1a;
+$txt-color2: #4d4d4d;
+
+
+//共通項目-------------------------------------------------- 
 
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+	font-family: 'Noto Sans JP', sans-serif;
+	line-height: 1.5;
+	color: $txt-color1;
 }
 
-.wrapper {}
+a {
+	text-decoration: none;
+	transition: ease 0.2s;
+	color: $txt-color1;
+
+
+	&:hover {
+		transition: ease 0.2s;
+	}
+}
+
+.wrapper {
+	width: 100%;
+}
+
+.inner {
+	margin: 0 5vw;
+}
+
+
+
+//レイアウト-------------------------------------------------- 
 
 .header {
-    width: 100%;
+	width: 100%;
+	background: #fff;
 
-    .inner {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 0;
+	&--content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 0;
 
-        h1 {
-            max-width: 140px;
-            margin: 0 0 0 5vw;
+		&__logo {
+			width: 160px;
+			height: auto;
+		}
 
-            a {
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-        }
+		&__drower {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
 
-        .drower {
-            display: flex;
-            flex-direction: row;
+			&__text {
+				font-size: 12px;
+				font-weight: bold;
+				color: $primary-color;
+				margin: 0 10px 0 0;
+			}
 
-            div {
-                display: flex;
-                align-items: center;
-                font-size: 12px;
-                font-weight: bold;
-                letter-spacing: 1px;
-                color: $primary-color;
-            }
+			&__btn {
+				width: 30px;
+				height: 30px;
+				border-radius: 1em;
+				background: $bg-color;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 
-            .menu-btn {
-                background: #aaa;
 
-                button {
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 1em;
-                    border: none;
-                    background: $primary-color;
-                }
-            }
-        }
-    }
+				&::after {
+					content: "";
+					width: 8px;
+					height: 8px;
+					background: $primary-color;
+					border-radius: 1em;
+					position: absolute;
+				}
+
+				&::before {
+					content: "";
+					width: 8px;
+					height: 8px;
+					background: $primary-color;
+					border-radius: 1em;
+					position: absolute;
+					// アニメーション
+					animation-name: expansion;
+					animation-duration: 2s;
+					animation-timing-function: ease-in;
+					animation-delay: 0s;
+					animation-iteration-count: infinite;
+					animation-direction: normal;
+					animation-fill-mode: forwards;
+					animation-play-state: running;
+
+					@keyframes expansion {
+						0% {
+							width: 8px;
+							height: 8px;
+							background: $primary-color;
+						}
+
+						100% {
+							width: 30px;
+							height: 30px;
+							background: $bg-color;
+						}
+					}
+				}
+			}
+		}
+	}
 }
+
+.main {}
+
+.topimage {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	// height: 70vh;
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		width: 100vw;
+		height: 60%;
+		background: $bg-color;
+	}
+
+	&--headline {
+		position: relative;
+		z-index: 3;
+		margin: 100px 0 80px 0;
+
+		h2 {
+			font-size: 34px;
+			line-height: 1.58;
+			color: $txt-color1;
+			margin: 0 0 10px 0;
+
+			span {
+				display: inline-block;
+			}
+		}
+
+		p {
+			font-size: 16px;
+			font-weight: bold;
+			color: $txt-color2;
+			letter-spacing: 0.05em;
+		}
+	}
+
+	&--img {
+		position: absolute;
+		z-index: 3;
+		height: 800px;
+
+		&__01 {
+			width: 60vw;
+			height: auto;
+			top: -160px;
+			right: -30px;
+		}
+
+		&__02 {
+			width: 70vw;
+			height: auto;
+			top: 0;
+			left: -60px;
+		}
+
+		&__03 {
+			width: 45vw;
+			height: auto;
+			right: 20px;
+			bottom: -300px;
+			z-index: 2;
+		}
+	}
+
+	&--text {
+		position: relative;
+		padding: 100px 0 100px 0;
+		font-size: 16px;
+		line-height: 2.15;
+		z-index: 2;
+	}
+
+	&--btn {
+		position: absolute;
+		right: 5vw;
+		bottom: -70px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 150px;
+		height: 150px;
+		background: #ffbb33;
+		border-radius: 5em;
+		font-weight: bold;
+		z-index: 3;
+
+		&::before {
+			position: absolute;
+			content: "";
+			width: 150px;
+			height: 150px;
+			bottom: -20px;
+			border-radius: 5em;
+			background: #ffbb33;
+			filter: blur(6px);
+			opacity: 0.2;
+			z-index: 1;
+		}
+	}
+}
+
+.topimage {}
