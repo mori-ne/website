@@ -77,6 +77,57 @@ a:hover {
   margin: 0 5vw;
 }
 
+.fadeUp {
+  -webkit-animation-name: fadeUpAnime;
+          animation-name: fadeUpAnime;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.delay05s {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.delay1s {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.delay15s {
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.delay2s {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+@-webkit-keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .header {
   width: 100%;
   background: #fff;
@@ -174,18 +225,9 @@ a:hover {
   display: flex;
   flex-direction: column;
 }
-.topimage::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  height: 60%;
-  background: #e9f0f7;
-}
 .topimage--headline {
   position: relative;
   z-index: 3;
-  margin: 100px 0 80px 0;
 }
 .topimage--headline h2 {
   font-size: 34px;
@@ -203,35 +245,27 @@ a:hover {
   letter-spacing: 0.05em;
 }
 .topimage--img {
-  position: absolute;
-  z-index: 3;
   height: 800px;
+  display: flex;
+  flex-direction: column;
 }
 .topimage--img__01 {
   width: 60vw;
   height: auto;
-  top: -160px;
-  right: -30px;
 }
 .topimage--img__02 {
   width: 70vw;
   height: auto;
-  top: 0;
-  left: -60px;
 }
 .topimage--img__03 {
   width: 45vw;
   height: auto;
-  right: 20px;
-  bottom: -300px;
-  z-index: 2;
 }
 .topimage--text {
   position: relative;
   padding: 100px 0 100px 0;
   font-size: 16px;
   line-height: 2.15;
-  z-index: 2;
 }
 .topimage--btn {
   position: absolute;
