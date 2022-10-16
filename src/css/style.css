@@ -1,57 +1,96 @@
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
 /*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-* {
-  margin: 0;
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+  cursor: revert;
 }
 
-html,
-body {
-  height: 100%;
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
 }
 
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
+/* For images to not be able to exceed their container */
+img {
   max-width: 100%;
 }
 
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
 input,
-button,
-textarea,
-select {
-  font: inherit;
+textarea {
+  -webkit-user-select: auto;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::-moz-placeholder {
+  color: unset;
+}
+:-ms-input-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
   overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
 }
 
-#root,
-#__next {
-  isolation: isolate;
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
 }
 
 body {
@@ -71,6 +110,7 @@ a:hover {
 
 .wrapper {
   width: 100%;
+  overflow: hidden;
 }
 
 .inner {
@@ -149,7 +189,7 @@ a:hover {
 }
 .header--content__drower__text {
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   color: #126ab2;
   margin: 0 10px 0 0;
 }
@@ -221,16 +261,27 @@ a:hover {
 }
 
 .topimage {
-  position: relative;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin: 0 0 70px 0;
+}
+.topimage::before {
+  content: "";
+  width: 100vw;
+  height: 70vh;
+  background: #e9f0f7;
+  position: absolute;
+  bottom: 0;
 }
 .topimage--headline {
+  margin: 50px 0 0 0;
   position: relative;
-  z-index: 3;
+  z-index: 4;
 }
 .topimage--headline h2 {
   font-size: 34px;
+  font-weight: 700;
   line-height: 1.58;
   color: #1a1a1a;
   margin: 0 0 10px 0;
@@ -245,25 +296,38 @@ a:hover {
   letter-spacing: 0.05em;
 }
 .topimage--img {
-  height: 800px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin: -100px 0 0 0;
 }
 .topimage--img__01 {
   width: 60vw;
   height: auto;
+  position: absolute;
+  right: -30px;
+  z-index: 3;
 }
 .topimage--img__02 {
   width: 70vw;
   height: auto;
+  position: absolute;
+  left: -40px;
+  top: 175px;
+  z-index: 2;
 }
 .topimage--img__03 {
   width: 45vw;
   height: auto;
+  position: absolute;
+  top: 360px;
+  right: 0;
+  z-index: 1;
 }
 .topimage--text {
   position: relative;
-  padding: 100px 0 100px 0;
+  padding: 70px 0 100px 0;
   font-size: 16px;
   line-height: 2.15;
 }
@@ -279,7 +343,7 @@ a:hover {
   background: #ffbb33;
   border-radius: 5em;
   font-weight: bold;
-  z-index: 3;
+  z-index: 5;
 }
 .topimage--btn::before {
   position: absolute;
@@ -292,4 +356,40 @@ a:hover {
   filter: blur(6px);
   opacity: 0.2;
   z-index: 1;
+}
+
+.news h2 {
+  font-size: 26px;
+  color: #126ab2;
+}
+.news--column {
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+  background: #fff;
+  margin: 0 0 10px 0;
+  border-radius: 8px;
+  position: relative;
+}
+.news--column::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  filter: blur(5px);
+  transform: translateY(5px) scale(1.02);
+  mix-blend-mode: multiply;
+}
+.news--column__img {
+  width: 40vw;
+  background: #aaa;
+  margin: 0 10px 0 0;
+}
+.news--column__text span {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
